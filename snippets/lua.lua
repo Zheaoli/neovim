@@ -1,4 +1,4 @@
-return {
+return 
   -- e.g. local bar = require("foo.bar")
   s(
     'require',
