@@ -83,7 +83,7 @@ function config.neoscroll()
 end
 
 function config.toggleterm()
-  require("toggleterm").setup({ shell = "/bin/bash" })
+  require("toggleterm").setup({ shell = "/bin/zsh" })
   if vim.fn.executable("lazygit") > 0 then
     vim.cmd(
       [[command! Lazygit lua require("toggleterm.terminal").Terminal:new({cmd="lazygit", hidden=true, direction="float"}):toggle()]]

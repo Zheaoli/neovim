@@ -35,6 +35,9 @@ nmap({
   -- toggleterm
   { "<Leader>t", cmd("exe v:count1 . 'ToggleTerm size=10 direction=horizontal'") },
   { "<Leader>l", cmd("Lazygit"), opts(noremap) },
+  -- diffview
+  { "<leader>do", cmd("DiffviewOpen"), opts(noremap)},
+  { "<leader>dx", cmd("DiffviewClose"), opts(noremap)},
   -- code navigation
   { "ga", cmd("lua require('lspsaga.codeaction').code_action()"), opts(noremap, silent) },
   {

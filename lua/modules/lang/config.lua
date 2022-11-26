@@ -23,6 +23,14 @@ function config.nvim_treesitter()
   })
 end
 
+function config.mason()
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = {"clangd","pyright","gopls","elixirls","terraformls"},
+      automatic_installation=true,
+    })
+end
+
 function config.nvim_lspconfig()
   local executable = vim.fn.executable
 
@@ -52,12 +60,11 @@ function config.nvim_lspconfig()
   end
 
   -- clangd
-  if executable("clangd") > 0 then
-    nvim_lsp["clangd"].setup({})
-  end
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.offsetEncoding = { "utf-16" }
+    nvim_lsp["clangd"].setup({ capabilities = capabilities })
 
   -- golang
-  if executable("gopls") > 0 then
     nvim_lsp["gopls"].setup({
       on_attach = on_attach,
       flags = {
@@ -79,10 +86,14 @@ function config.nvim_lspconfig()
       opts.formatter = "goimports"
     end
     require("go").setup(opts)
-  end
+    nvim_lsp["pyright"].setup({
+      on_attach = on_attach,
+    })
+    nvim_lsp["elixirls"].setup({
+        on_attach = on_attach,
+    })
 
   -- rust
-  if executable("rust-analyzer") > 0 then
     local rust_tools_opt = {
       server = {
         settings = {
@@ -115,7 +126,6 @@ function config.nvim_lspconfig()
 
     require("rust-tools").setup(rust_tools_opt)
     vim.g.rustfmt_autosave = 1
-  end
 
   -- lua
   -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use

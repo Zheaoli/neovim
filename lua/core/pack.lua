@@ -136,6 +136,7 @@ function plugins.load_compile()
   end
 
   local PackerHooks = vim.api.nvim_create_augroup('PackerHooks', { clear = true })
+  
   vim.api.nvim_create_autocmd('User', {
     group = PackerHooks,
     pattern = 'PackerCompileDone',

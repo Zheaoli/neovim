@@ -7,12 +7,10 @@ local conf = require("modules.completion.config")
 plugin({
   "glepnir/lspsaga.nvim",
   config = conf.lspsaga,
+  commit = "014aeb8be75d927960914d442bf81ada4e24295b"
 })
 
 plugin({ "hrsh7th/nvim-compe", config = conf.compe })
 plugin({
    "github/copilot.vim", config=conf.copilot
-})
-plugin({
-    "williamboman/mason.nvim", config=conf.mason
 })

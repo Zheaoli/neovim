@@ -41,4 +41,4 @@ plugin({
 plugin({ "mfussenegger/nvim-dap", config = conf.dap })
 plugin({ "yuchanns/phpfmt.nvim", config = conf.phpfmt })
 plugin({ "yuchanns/shfmt.nvim", config = conf.shfmt })
-
+plugin({ "williamboman/mason-lspconfig.nvim", requires={{"williamboman/mason.nvim"}}, config=conf.mason })

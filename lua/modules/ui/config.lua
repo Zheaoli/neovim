@@ -21,8 +21,10 @@ function config.vfilter()
       keep = true,
       layout = "floating",
       columns = "indent,devicons,name,mode,size,time",
-      listed = false,
-      blend = 30,
+      listed = true,
+      show_hidden_files = true,
+      blend = 0,
+      find_file =  true,
     },
   })
 end
